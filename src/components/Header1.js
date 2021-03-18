@@ -14,7 +14,9 @@ export default class Header1 extends Component {
                     <div className = "nav_right">                         
                         <img src = {avatar} className = "avatar" />
                         <span className = "dropdown">
-                            <span className = "user_name">{this.props.name}</span>
+                            <span className = "user_name">
+                                {window.location.href.split("?")[1].split("&")[0]}
+                                </span>
                             <div className="dropdown-content">
                                 <Link to = '/account'>Account</Link>
                                 <Link to  = '/edit'>Edit Profile</Link>
@@ -23,6 +25,7 @@ export default class Header1 extends Component {
                         </span>
                     </div>
                 </nav>
+                <p className = "welcome">Welcome {window.location.href.split("?")[1].split("&")[0]}! </p>
             </div>
         )
     }

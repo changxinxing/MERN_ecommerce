@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Header1 from './Header1';
 import Header from './Header';
@@ -48,12 +48,14 @@ export default class Login extends Component {
                             })
                         }
                         else {
+                           
                             this.setState({
                                 success_notication:"Welcome  " + res.data.name + "!",
                                 email_notification:"",
                                 password_notification:"",
                                 user_login:res.data.name
                             })
+                         
                         }                    
                     }    
             )
@@ -87,39 +89,16 @@ export default class Login extends Component {
                         <p className = "tocreate">Don't have an account?</p>
                         <Link to="/create" className="nav-link">Register</Link>
                     </div>
+                    <div className = "form-group">
+                        <Link to = "/forget" className = "nav-link">Forget Password?</Link>
+                    </div>
                 </div>
             </div>
             )
         }
         else{
-        return (
-            <div>
-                <Header1 name = {this.state.user_login} />
-                <p className = "welcome">{this.state.success_notication}</p>
-                <div className = "login">
-                    <p className = "form-title">Login</p>
-                    <form onSubmit = {this.Login} autoComplete="on">
-                        <div className = "form-group">
-                            <label>Email:</label><br />
-                            <input type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} placeholder = "Type your email" required />
-                            <p className = "warn">{this.state.email_notification}</p>
-                        </div>
-                        <div className = "form-group">
-                            <label>Password:</label><br />
-                            <input type = "password" onChange = {this.onChangePassword} value = {this.state.user_password} placeholder = "Type a password" required />
-                            <p className = "warn">{this.state.password_notification}</p>
-                        </div>
-                        <div className = "form-group">
-                            <input type = "submit" value = "Sign me in" className = "btn btn-primary" />
-                        </div>
-                    </form>
-                    <div className = "already">
-                        <p className = "tocreate">Don't have an account?</p>
-                        <Link to="/create" className="nav-link">Register</Link>
-                    </div>
-                </div>
-            </div>
-        )
+            var redirect = `/dashboard?${this.state.user_login}&${this.state.user_password}`
+            return <Redirect to = {redirect}/>;
         }
     }
 }
