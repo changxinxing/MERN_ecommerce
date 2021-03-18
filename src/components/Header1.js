@@ -8,9 +8,8 @@ export default class Header1 extends Component {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className = "nav_left">
-                        <Link to="/" className="navbar-brand">Home</Link>                    
-                        <Link to="/login" className="navbar-brand">Login</Link>                          
-                        <Link to="/create" className="navbar-brand">Register</Link>
+                        <Link to="/" className="navbar-brand">Home</Link>
+                        <Link to = '/account' className="navbar-brand">My Account</Link>
                     </div>
                     <div className = "nav_right">                         
                         <img src = {avatar} className = "avatar" />
