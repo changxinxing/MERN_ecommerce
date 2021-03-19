@@ -1,8 +1,25 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import avatar from '../avatar.jpg'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class Header1 extends Component {
+    state = {
+        user_name:'',
+        user_mail:'',
+        user_id:''
+    }
+    componentDidMount(){
+        axios.get("http://localhost:4000/auth",{withCredentials: true, credentials: 'include'})
+        .then((res)=>{
+            console.log(res)
+            this.setState({
+                user_name:res.data.name,
+                user_mail:res.data.email,
+                user_id:res.data._id
+            })
+        })
+    }
     render() {
         return (
             <div>
@@ -15,7 +32,7 @@ export default class Header1 extends Component {
                         <img src = {avatar} className = "avatar" />
                         <span className = "dropdown">
                             <span className = "user_name">
-                                {window.location.href.split("?")[1].split("&")[0]}
+                                {this.state.user_name}
                             </span>
                             <div className="dropdown-content">
                                 <Link to = '/account'>Account</Link>
@@ -25,7 +42,7 @@ export default class Header1 extends Component {
                         </span>
                     </div>
                 </nav>
-                <p className = "welcome">Welcome {window.location.href.split("?")[1].split("&")[0]}! </p>
+                <p className = "bg-green-400 text-center text-6xl text-white py-2 px-2">Welcome {this.state.user_name}! </p>
             </div>
         )
     }

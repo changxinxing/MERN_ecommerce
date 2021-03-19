@@ -94,7 +94,7 @@ export default class Login extends Component {
         }
         else{
             var redirect = `/dashboard?${this.state.user_login}&${this.state.user_password}`
-            return <Redirect to = {redirect}/>;
+            return <Redirect to = '/dashboard'/>;
         }
     }
 }

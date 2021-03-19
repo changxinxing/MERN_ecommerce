@@ -7,6 +7,7 @@ export default class Edit extends Component {
     state = {
         success_notification:"",
         password_notification:"",
+        user_id:'',
         user_name: '',
         user_mail: '',
         user_password: ''
@@ -17,7 +18,8 @@ export default class Edit extends Component {
             console.log(res)
             this.setState({
                 user_name:res.data.name,
-                user_mail:res.data.email
+                user_mail:res.data.email,
+                user_id:res.data._id
             })
         })
     }
@@ -43,6 +45,7 @@ export default class Edit extends Component {
         e.preventDefault();
     
         const postData = {
+            _id:this.state.user_id,
             name:this.state.user_name,
             email:this.state.user_mail,
             password: md5(this.state.user_password),
@@ -74,7 +77,6 @@ export default class Edit extends Component {
                     });
             }
             else{
-                console.log(this.state.user_name)
                 this.setState({
                     password_notification:"Password must have more than 5 characters"
                 })

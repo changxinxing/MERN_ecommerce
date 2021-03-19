@@ -37,6 +37,12 @@ p.welcome {
   font-size: 42px;
   color: white;
 }
+p.warning {
+  text-align: center;
+  background: rgb(145, 145, 40);
+  font-size: 42px;
+  color: white;
+}
 .header {
   height: 5vh;
 }
