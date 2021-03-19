@@ -16,7 +16,7 @@ export default class Header1 extends Component {
                         <span className = "dropdown">
                             <span className = "user_name">
                                 {window.location.href.split("?")[1].split("&")[0]}
-                                </span>
+                            </span>
                             <div className="dropdown-content">
                                 <Link to = '/account'>Account</Link>
                                 <Link to  = '/edit'>Edit Profile</Link>

@@ -52,6 +52,7 @@ img.avatar {
 }
 .nav_right {
   width: 10%;
+  display: flex;
 }
 .nav_left {
   width: 85%;
@@ -90,4 +91,8 @@ a.btn.btn-primary-cancel {
   border-color: red;
   width: 100%;
   margin-top: 10px;
+}
+span.dropdown {
+  margin-top: auto;
+  margin-bottom: auto;
 }

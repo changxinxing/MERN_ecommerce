@@ -11,6 +11,16 @@ export default class Edit extends Component {
         user_mail: '',
         user_password: ''
     }
+    componentDidMount(){
+        axios.get("http://localhost:4000/auth",{withCredentials: true, credentials: 'include'})
+        .then((res)=>{
+            console.log(res)
+            this.setState({
+                user_name:res.data.name,
+                user_mail:res.data.email
+            })
+        })
+    }
     onChangeName = e => {
         e.preventDefault();
         this.setState({
@@ -50,7 +60,7 @@ export default class Edit extends Component {
                         }
                         else{
                         this.setState({
-                            success_notification:"Hi  " + this.state.user_name + ",  Thank you for your creating an account!",
+                            success_notification:"Hi  " + this.state.user_name + ",  Your Profile is successfully updated!",
                             password_notification:"",
                             user_name:"",
                             user_mail:"",
@@ -64,6 +74,7 @@ export default class Edit extends Component {
                     });
             }
             else{
+                console.log(this.state.user_name)
                 this.setState({
                     password_notification:"Password must have more than 5 characters"
                 })
@@ -78,11 +89,11 @@ export default class Edit extends Component {
                     <form onSubmit = {this.onSubmit} autoComplete="on">
                         <div className = "form-group">
                             <label>Name:</label><br />
-                            <input type = "text" onChange = {this.onChangeName} value = {this.state.user_name} placeholder = "Type your name" required />
+                            <input type = "text" onChange = {this.onChangeName} value = {this.state.user_name} required />
                         </div>
                         <div className = "form-group">
                             <label>Email:</label><br />
-                            <input type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} placeholder = "Type your email" required />
+                            <input type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} required />
                         </div>
                         <div className = "form-group">
                             <label>Password:</label><br />

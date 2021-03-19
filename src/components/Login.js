@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Header1 from './Header1';
 import Header from './Header';
 
 export default class Login extends Component {
@@ -30,9 +29,8 @@ export default class Login extends Component {
             password: this.state.user_password,
         }
         axios
-            .post("http://localhost:4000/login", postData)
+            .post("http://localhost:4000/login", postData, {withCredentials: true, credentials: 'include'})
             .then((res) => {
-                        console.log(res)
                         if(res.data.mailloginSuccess === false){
                             this.setState({
                                 email_notification:"Unknown email address. Please check again",
@@ -47,15 +45,13 @@ export default class Login extends Component {
                                 success_notication:""
                             })
                         }
-                        else {
-                           
+                        else {                           
                             this.setState({
                                 success_notication:"Welcome  " + res.data.name + "!",
                                 email_notification:"",
                                 password_notification:"",
                                 user_login:res.data.name
-                            })
-                         
+                            })                         
                         }                    
                     }    
             )
