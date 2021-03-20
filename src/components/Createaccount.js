@@ -80,17 +80,12 @@ export default class Createaccount extends Component {
                 email_notification:"Please type correct email format"
             })
         }
-
-
-        // $.post("http://localhost:4000",postData, function(data){
-        //     console.log("response data: ",data);
-        // })
     }
     render() {
         return (
             <div>
                 <p className = "welcome">{this.state.success_notification}</p>
-                <div className = "create">
+                <div className = "w-4/12 mx-auto mt-60 bg-blue-100 py-20px rounded-xl shadow-lg py-6">
                     <p className = "form-title">Register</p>
                     <form onSubmit = {this.onSubmit} autoComplete="on">
                         <div className = "form-group">

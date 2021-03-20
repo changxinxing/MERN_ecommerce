@@ -11,8 +11,8 @@ export default class Homepage extends Component {
                     <img src={logo} className="App-logo" alt="logo" />
                     <p>Learn MERN Stack</p><br />
                     <div className = "quick-links">
-                        <Link to = '/create' className = "quick_tab">Register</Link>
-                        <Link to = '/login' className = "quick_tab">Login</Link>
+                        <Link to = '/create' className = "border-2 border-white rounded-xl py-1 px-4 text-white no-underline hover:bg-purple-700 mx-6">Register</Link>
+                        <Link to = '/login' className = "border-2 border-white rounded-xl py-1 px-4 text-white no-underline hover:bg-green-700 mx-6">Login</Link>
                     </div>
                 </header>
             </div>

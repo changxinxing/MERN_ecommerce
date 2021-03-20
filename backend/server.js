@@ -50,21 +50,14 @@ app.post('/login', (req, res) => {
                         message:user.token,
                         name:user.name
                     })
-                })
-                // user.token = jwt.sign(user.name, "shhhh");
-                // res.cookie("user", user.token).status(200).json({
-                //     loginSuccess: true,
-                //     message:user.token,
-                //     name:user.name
-                // })                            
+                })                           
             }
             else{
                 return res.json({
                     passwordloginSuccess:false,
                     message:"Wrong Password"
                 })
-            }
-            //user.comparePassword(req.body.password) 
+            } 
         }        
     }) 
      
@@ -99,7 +92,7 @@ app.post('/resetpassword', (req,res) => {
         if(!user){
             return res.json({
                 success: false,
-                message:"Not available user"
+                message:"Incorrect email. Type correct email or create a new account."
             })
         }
         else{
@@ -116,8 +109,7 @@ app.post('/resetpassword', (req,res) => {
             })
             sendEmail(req.body.email, "Password Reset Request", verification_code)
         }
-    })
-    
+    })    
 })
 
 app.listen(PORT, function() {

@@ -37,6 +37,14 @@ p.welcome {
   font-size: 42px;
   color: white;
 }
+p.reset {
+  text-align: center;
+  background: #9cb700;
+  font-size: 30px;
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 p.warning {
   text-align: center;
   background: rgb(145, 145, 40);

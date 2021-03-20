@@ -42,9 +42,11 @@ export default class Forget extends Component {
             return(
                 <div>
                     <Header />
-                    <p className = "welcome">The new password has been sent to your email. Please check your inbox. <br />
-                    You can change your password anytime.</p>
-                    <Link to = '/login'>Login</Link>
+                    <p className = "reset">
+                        The new password has been sent to your email. Please check your inbox. <br />
+                        You can change your password anytime.
+                    </p>
+                    <Link to = '/login' className = "text-center text-3xl text-white py-2 px-2">Login</Link>
                 </div>
             )
         }
@@ -52,7 +54,7 @@ export default class Forget extends Component {
             return (
                 <div>
                     <Header />
-                    <form onSubmit = {this.Submit} autoComplete="on" className = "login">
+                    <form onSubmit = {this.Submit} autoComplete="on" className = "w-4/12 mx-auto mt-60 bg-blue-100 py-20px rounded-xl shadow-lg py-6">
                         <div className = "form-group">
                             <p className = "forget_password">Please enter your email address.</p>
                             <label>Email:</label><br />

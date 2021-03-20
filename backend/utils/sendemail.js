@@ -27,7 +27,7 @@ const sendEmail = async (email, subject, contents) => {
         // return res.status(200).json({
         //   success: true,
         // });
-        console.log("success!");
+        console.log("Email sent correctly!");
       }
     });
   } catch (error) {

@@ -64,30 +64,30 @@ export default class Login extends Component {
             return(
                 <div>
                     <Header />
-                    <div className = "login">
-                    <p className = "form-title">Login</p>
-                    <form onSubmit = {this.Login} autoComplete="on">
-                        <div className = "form-group">
-                            <label>Email:</label><br />
-                            <input type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} placeholder = "Type your email" required />
-                            <p className = "warn">{this.state.email_notification}</p>
+                    <div className = "w-4/12 mx-auto mt-60 bg-blue-100 py-20px rounded-xl shadow-lg py-6">
+                        <p className = "form-title">Login</p>
+                        <form onSubmit = {this.Login} autoComplete="on">
+                            <div className = "form-group">
+                                <label>Email:</label><br />
+                                <input type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} placeholder = "Type your email" required />
+                                <p className = "warn">{this.state.email_notification}</p>
+                            </div>
+                            <div className = "form-group">
+                                <label>Password:</label><br />
+                                <input type = "password" onChange = {this.onChangePassword} value = {this.state.user_password} placeholder = "Type a password" required />
+                                <p className = "warn">{this.state.password_notification}</p>
+                            </div>
+                            <div className = "form-group">
+                                <input type = "submit" value = "Sign me in" className = "btn btn-primary" />
+                            </div>
+                        </form>
+                        <div className = "already">
+                            <p className = "tocreate">Don't have an account?</p>
+                            <Link to="/create" className="nav-link">Register</Link>
                         </div>
                         <div className = "form-group">
-                            <label>Password:</label><br />
-                            <input type = "password" onChange = {this.onChangePassword} value = {this.state.user_password} placeholder = "Type a password" required />
-                            <p className = "warn">{this.state.password_notification}</p>
+                            <Link to = "/forget" className = "nav-link">Forget Password?</Link>
                         </div>
-                        <div className = "form-group">
-                            <input type = "submit" value = "Sign me in" className = "btn btn-primary" />
-                        </div>
-                    </form>
-                    <div className = "already">
-                        <p className = "tocreate">Don't have an account?</p>
-                        <Link to="/create" className="nav-link">Register</Link>
-                    </div>
-                    <div className = "form-group">
-                        <Link to = "/forget" className = "nav-link">Forget Password?</Link>
-                    </div>
                 </div>
             </div>
             )
