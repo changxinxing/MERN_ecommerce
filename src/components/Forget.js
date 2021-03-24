@@ -58,7 +58,7 @@ export default class Forget extends Component {
                         <div className = "form-group">
                             <p className = "forget_password">Please enter your email address.</p>
                             <label>Email:</label><br />
-                            <input type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} placeholder = "Type your email" required />
+                            <input className = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} placeholder = "Type your email" required />
                             <p className = "warn">{this.state.warning}</p>                       
                         </div>
                         <div className = "form-group">

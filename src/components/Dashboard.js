@@ -2,19 +2,30 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Header1 from './Header1'
 import Header from './Header'
+import Sidebar from './Sidebar'
 
 export default class Dashboard extends Component {
     state = {
-        auth:""
+        auth:"",
+        admin:false
     }
     componentDidMount() {        
         axios.get("http://localhost:4000/auth",{withCredentials: true, credentials: 'include'})
         .then((res)=>{
             console.log(res)
             if(res.data.isAuth == true){
-                this.setState({
-                    auth:'success'
-                })
+                if(res.data.isAdmin == 0){
+                    this.setState({
+                        auth:'success',
+                        admin:true
+                    })
+                }
+                else{
+                    this.setState({
+                        auth:'success',
+                        admin:false
+                    })
+                }
             }
             else {
                 this.setState({
@@ -25,12 +36,23 @@ export default class Dashboard extends Component {
     }
     render() {
         if(this.state.auth == "success"){
-            return (
-                <div>
-                    <Header1 />
-                    <button className = "bg-red-500 hover : bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick = {this.submit}>Tailwind Button </ button>
-                </div>
-            )
+            if(this.state.admin == true){
+                return (
+                    <div>
+                        <Header1 />
+                        <div className = "admin_page">
+                            <Sidebar />
+                        </div>
+                    </div>
+                )
+            }
+            else{
+                return(
+                    <div>
+                        <Header1 />
+                    </div>
+                )
+            }
         }
         else{
             return (

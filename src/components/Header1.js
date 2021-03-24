@@ -42,7 +42,7 @@ export default class Header1 extends Component {
                         </span>
                     </div>
                 </nav>
-                <p className = "bg-green-400 text-center text-6xl text-white py-2 px-2">Welcome {this.state.user_name}! </p>
+                {/* <p className = "bg-green-400 text-center text-6xl text-white py-2 px-2">Welcome {this.state.user_name}! </p> */}
             </div>
         )
     }

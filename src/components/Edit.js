@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import md5 from 'md5';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Header from './Header';
+import Header1 from './Header1';
 export default class Edit extends Component {
     state = {
         success_notification:"",
@@ -85,21 +85,22 @@ export default class Edit extends Component {
     render() {
         return (
             <div>
-                <Header />
-                <div className = "create">
+                <Header1 />
+                <p className = "text-center text-6xl text-white py-2 px-2">{this.state.success_notification}</p>
+                <div className = "w-4/12 mx-auto mt-60 bg-blue-100 py-20px rounded-xl shadow-lg py-6">
                     <p className = "form-title">Edit your Profile</p>
                     <form onSubmit = {this.onSubmit} autoComplete="on">
                         <div className = "form-group">
                             <label>Name:</label><br />
-                            <input type = "text" onChange = {this.onChangeName} value = {this.state.user_name} required />
+                            <input className = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type = "text" onChange = {this.onChangeName} value = {this.state.user_name} required />
                         </div>
                         <div className = "form-group">
                             <label>Email:</label><br />
-                            <input type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} required />
+                            <input className = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} required />
                         </div>
                         <div className = "form-group">
                             <label>Password:</label><br />
-                            <input type = "password" onChange = {this.onChangePassword} value = {this.state.user_password} placeholder = "Type a password" required />
+                            <input className = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type = "password" onChange = {this.onChangePassword} value = {this.state.user_password} placeholder = "Type a password" required />
                         </div>
                         <div className = "form-group">
                             <input type = "submit" value = "Update" className = "btn btn-primary" />

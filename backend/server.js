@@ -69,7 +69,8 @@ app.get('/auth', auth,  (req, res) =>{
         name:req.user.name,
         email:req.user.email,
         password:req.user.password,
-        isAuth:true
+        isAuth:true,
+        isAdmin:req.user.role
     })
 })
 app.post('/edit', (req,res) => {
@@ -82,8 +83,7 @@ app.post('/edit', (req,res) => {
     })
     .catch(function(error){
         console.log(error)
-    })
-    
+    })    
 })
 
 app.post('/resetpassword', (req,res) => {

@@ -69,12 +69,12 @@ export default class Login extends Component {
                         <form onSubmit = {this.Login} autoComplete="on">
                             <div className = "form-group">
                                 <label>Email:</label><br />
-                                <input type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} placeholder = "Type your email" required />
+                                <input className = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type = "text" onChange = {this.onChangeMail} value = {this.state.user_mail} placeholder = "Type your email" required />
                                 <p className = "warn">{this.state.email_notification}</p>
                             </div>
                             <div className = "form-group">
                                 <label>Password:</label><br />
-                                <input type = "password" onChange = {this.onChangePassword} value = {this.state.user_password} placeholder = "Type a password" required />
+                                <input className = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type = "password" onChange = {this.onChangePassword} value = {this.state.user_password} placeholder = "Type a password" required />
                                 <p className = "warn">{this.state.password_notification}</p>
                             </div>
                             <div className = "form-group">
