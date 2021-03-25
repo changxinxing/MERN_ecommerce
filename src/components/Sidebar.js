@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom'
 
 export default class Sidebar extends Component {
     componentDidMount() {
-        console.log("clicked");
         var dropdown = document.getElementsByClassName("dropdown-btn");
         var i;
-
         for (i = 0; i < dropdown.length; i++) {
             dropdown[i].addEventListener("click", function () {
                 this.classList.toggle("active");
@@ -22,31 +20,27 @@ export default class Sidebar extends Component {
     render() {
         return (
             <div>
-                <div class="sidenav">
-                    <Link to='/dashboard/accounts' className="dropdown-btn text-white font-bold py-2 px-4 rounded active:bg-red-700">Account Settings</ Link>
+                <div className="sidenav">
+                    <button className="dropdown-btn text-white font-bold py-2 px-4 rounded active:bg-red-700">Account Settings</button>
                     <div className="dropdown-container">
-                        <a href="#">Listing Page</a>
-                        <a href="#">Detail Page</a>
-                        <a href="#">Add New</a>
+                        <Link to = "/dashboard/accounts">Listing Page</Link>
+                        <Link to = "/dashboard/accounts/detail">Detail Page</Link>
+                        <Link to = "/dashboard/accounts/add">Add New</Link>
                     </div>
                     <Link to='/dashboard/rep' className="text-white font-bold py-2 px-4 rounded active:bg-red-700">Rep Management</ Link>
-                    <Link to='/dashboard/products' className="dropdown-btn text-white font-bold py-2 px-4 rounded active:bg-red-700">Products</ Link>
+                    <button className="dropdown-btn text-white font-bold py-2 px-4 rounded active:bg-red-700">Products</ button>
                     <div className="dropdown-container">
-                        <a href="#">Listing Page</a>
-                        <a href="#">Detail Page</a>
-                        <a href="#">Add New</a>
+                        <Link to = "/dashboard/products">Listing Page</Link>
+                        <Link to = "/dashboard/products/detail">Detail Page</Link>
+                        <Link to = "/dashboard/products/add">Add New</Link>
                     </div>
-                    <Link to='/dashboard/customers' className="dropdown-btn text-white font-bold py-2 px-4 rounded active:bg-red-700">Customers</ Link>
+                    <button className="dropdown-btn text-white font-bold py-2 px-4 rounded active:bg-red-700">Customers</ button>
                     <div className="dropdown-container">
-                        <a href="#">Listing Page</a>
-                        <a href="#">Detail Page</a>
-                        <a href="#">Add New</a>
+                        <Link to = "/dashboard/customers">Listing Page</Link>
+                        <Link to = "/dashboard/customers/detail">Detail Page</Link>
+                        <Link to = "/dashboard/customers/add">Add New</Link>
                     </div>
                     <Link to='/dashboard/analytics' className="text-white font-bold py-2 px-4 rounded active:bg-red-700">Analytics</ Link>
-                </div>
-
-                <div class="main">
-                    <p>This is the dashboard page for admin</p>
                 </div>
             </div>
         )

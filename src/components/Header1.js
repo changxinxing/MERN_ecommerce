@@ -12,7 +12,6 @@ export default class Header1 extends Component {
     componentDidMount(){
         axios.get("http://localhost:4000/auth",{withCredentials: true, credentials: 'include'})
         .then((res)=>{
-            console.log(res)
             this.setState({
                 user_name:res.data.name,
                 user_mail:res.data.email,
@@ -26,7 +25,8 @@ export default class Header1 extends Component {
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className = "nav_left">
                         <Link to="/" className="navbar-brand">Home</Link>
-                        <Link to = '/account' className="navbar-brand">My Account</Link>
+                        <Link to = '/dashboard' className="navbar-brand">Dashboard</Link>
+                        <Link to = '/dashboard/accounts' className="navbar-brand">My Account</Link>
                     </div>
                     <div className = "nav_right">                         
                         <img src = {avatar} className = "avatar" />
@@ -35,7 +35,7 @@ export default class Header1 extends Component {
                                 {this.state.user_name}
                             </span>
                             <div className="dropdown-content">
-                                <Link to = '/account'>Account</Link>
+                                <Link to = '/dashboard/accounts'>Account</Link>
                                 <Link to  = '/edit'>Edit Profile</Link>
                                 <Link to = '/'>Logout</Link>
                             </div>

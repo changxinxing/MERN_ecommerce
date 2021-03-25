@@ -7,6 +7,13 @@ import Login from '../components/Login';
 import Dashboard from '../components/Dashboard';
 import Forget from '../components/Forget';
 import Edit from '../components/Edit';
+import Accounts from "../Subpages/Accounts";
+import Rep from "../Subpages/Rep";
+import Products from "../Subpages/Products";
+import Customers from "../Subpages/Customers";
+import Analytics from "../Subpages/Analytics";
+import Account_add from "../Subpages/Account_add";
+import Apitest from "../components/Apitest";
 
 function App() {
   return (
@@ -15,6 +22,7 @@ function App() {
         <Route exact path = "/">
             <Header />
             <Homepage />
+            <Apitest />
         </Route>
         <Route path="/login">
           <Login />
@@ -22,9 +30,27 @@ function App() {
         <Route path="/create">
           <Header />
           <Createaccount />
-        </Route>
-        <Route path = "/dashboard">
+        </Route>        
+        <Route exact path = "/dashboard">
           <Dashboard />
+        </Route>
+        <Route exact path = "/dashboard/accounts">
+          <Accounts />
+        </Route>
+        <Route path = "/dashboard/accounts/add">
+          <Account_add />
+        </Route>
+        <Route path = "/dashboard/rep">
+          <Rep />
+        </Route>
+        <Route path = "/dashboard/products">
+          <Products />
+        </Route>
+        <Route path = "/dashboard/customers">
+          <Customers />
+        </Route>
+        <Route path = "/dashboard/analytics">
+          <Analytics />
         </Route>
         <Route path = "/forget">
           <Forget />

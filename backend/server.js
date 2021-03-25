@@ -7,6 +7,8 @@ const md5 = require('md5');
 const Str = require('@supercharge/strings')
 const PORT = 4000;
 const sendEmail = require('../backend/utils/sendemail');
+const WooCommerceAPI  = require('woocommerce-api');
+const keys = require('./config/woocommerce-api');
 
 const userModel = require("./model/user");
 const auth = require('./middleware/auth');
@@ -111,6 +113,20 @@ app.post('/resetpassword', (req,res) => {
         }
     })    
 })
+
+app.get('/getProducts', (req, response) => {
+	var WooCommerce = new WooCommerceAPI({
+		url: 'https://store.kandykoi.com',
+		consumerKey: keys.consumerKey,
+		consumerSecret: keys.consumerSecret,
+		wpAPI: true,
+		version: 'wc/v3'
+	});
+
+	WooCommerce.get('products', function(err, data, res) {
+		response.json( JSON.parse(res) );
+	});
+} );
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);

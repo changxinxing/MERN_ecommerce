@@ -3,6 +3,7 @@ import axios from 'axios'
 import Header1 from './Header1'
 import Header from './Header'
 import Sidebar from './Sidebar'
+import Breadcrumb from './Breadcrumb'
 
 export default class Dashboard extends Component {
     state = {
@@ -12,7 +13,6 @@ export default class Dashboard extends Component {
     componentDidMount() {        
         axios.get("http://localhost:4000/auth",{withCredentials: true, credentials: 'include'})
         .then((res)=>{
-            console.log(res)
             if(res.data.isAuth == true){
                 if(res.data.isAdmin == 0){
                     this.setState({
@@ -42,6 +42,9 @@ export default class Dashboard extends Component {
                         <Header1 />
                         <div className = "admin_page">
                             <Sidebar />
+                            <div className = "main">
+                                <Breadcrumb />
+                            </div>
                         </div>
                     </div>
                 )
@@ -58,7 +61,7 @@ export default class Dashboard extends Component {
             return (
                 <div>
                     <Header />
-                    <p className = "warning">Please Login First</p>
+                    {/* <p className = "warning">Please Login First</p> */}
                 </div>
             )
         }        
