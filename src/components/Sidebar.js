@@ -20,7 +20,7 @@ export default class Sidebar extends Component {
     render() {
         return (
             <div>
-                <div className="sidenav">
+                <div className="sidenav h-cus2 w-sw fixed top-cus1 z-1 bg-black pt-spt">
                     <button className="dropdown-btn text-white font-bold py-2 px-4 rounded active:bg-red-700">Account Settings</button>
                     <div className="dropdown-container">
                         <Link to = "/dashboard/accounts">All Users</Link>

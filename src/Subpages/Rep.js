@@ -10,7 +10,7 @@ export default class Rep extends Component {
         auth: "",
         admin: false
     }
-    componentWillMount() {
+    componentDidMount() {
         axios.get("http://localhost:4000/auth", { withCredentials: true, credentials: 'include' })
             .then((res) => {
                 if (res.data.isAuth === true) {
@@ -40,7 +40,7 @@ export default class Rep extends Component {
                 return (
                     <div>
                         <Header />
-                        <div className="admin_page">
+                        <div className="mt-cus1">
                             <Sidebar />
                             <div className="main">
                                 <Breadcrumb />

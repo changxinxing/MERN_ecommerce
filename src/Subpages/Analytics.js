@@ -40,7 +40,7 @@ export default class Analytics extends Component {
                 return (
                     <div>
                         <Header />
-                        <div className="admin_page">
+                        <div className="mt-cus1">
                             <Sidebar />
                             <div className="main">
                                 <Breadcrumb />

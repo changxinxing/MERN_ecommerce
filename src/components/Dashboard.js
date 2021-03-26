@@ -40,7 +40,7 @@ export default class Dashboard extends Component {
                 return (
                     <div>
                         <Header1 />
-                        <div className = "admin_page">
+                        <div className = "mt-cus1">
                             <Sidebar />
                             <div className = "main">
                                 <Breadcrumb />

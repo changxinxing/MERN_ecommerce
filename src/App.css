@@ -110,22 +110,6 @@ span.dropdown {
   margin-top: auto;
   margin-bottom: auto;
 }
-.admin_page {
-  position: relative;
-  margin-top: 7vh;
-}
-
-.sidenav {
-  height: 93vh;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 7vh;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
 
 .sidenav a, .dropdown-btn {
   padding: 6px 8px 6px 16px;

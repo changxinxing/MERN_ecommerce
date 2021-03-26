@@ -22,7 +22,6 @@ function App() {
         <Route exact path = "/">
             <Header />
             <Homepage />
-            <Apitest />
         </Route>
         <Route path="/login">
           <Login />
