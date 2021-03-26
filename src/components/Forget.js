@@ -18,7 +18,7 @@ export default class Forget extends Component {
             .post("http://localhost:4000/resetpassword", postData, {withCredentials: true, credentials: 'include'})
             .then((res) => {
                 console.log(res)
-                if(res.data.success == true){
+                if(res.data.success === true){
                     this.setState({
                         success:true,
                         warning:''
@@ -38,7 +38,7 @@ export default class Forget extends Component {
         });
     }
     render() {
-        if(this.state.success == true){
+        if(this.state.success === true){
             return(
                 <div>
                     <Header />

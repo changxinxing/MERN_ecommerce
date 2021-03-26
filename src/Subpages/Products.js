@@ -14,8 +14,8 @@ export default class Products extends Component {
     componentDidMount() {
         axios.get("http://localhost:4000/auth", { withCredentials: true, credentials: 'include' })
             .then((res) => {
-                if (res.data.isAuth == true) {
-                    if (res.data.isAdmin == 0) {
+                if (res.data.isAuth === true) {
+                    if (res.data.isAdmin === 0) {
                         this.setState({
                             auth: 'success',
                             admin: true
@@ -36,8 +36,8 @@ export default class Products extends Component {
             })
     }
     render() {
-        if (this.state.auth == "success") {
-            if (this.state.admin == true) {
+        if (this.state.auth === "success") {
+            if (this.state.admin === true) {
                 return (
                     <div>
                         <Header />
@@ -45,8 +45,8 @@ export default class Products extends Component {
                             <Sidebar />
                             <div className="main">
                                 <Breadcrumb />
-                                <Apitest />
-                                <p>This is the Products page for admin</p>                                
+                                <p className = "text-center text-5xl py-5 text-yellow-800">All Products</p>
+                                <Apitest />                               
                             </div>
                         </div>
                     </div>

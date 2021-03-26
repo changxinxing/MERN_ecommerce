@@ -25,13 +25,13 @@ export default class Breadcrumb extends Component {
                 <ol className = "list-reset py-2 round flex">
                     {this.state.crumbs.map((crumb, index) => {
                         return index !== last & index>0 ?(
-                            <li key = {index} className = "px-2">
-                                <Link className = "px-1" to = {sublink[index]}>{crumb}</Link>
+                            <li key = {index}>
+                                <Link className = "px-1" to = {`sublink[index]`}>{crumb}</Link>
                                 <span className = "text-white px-1">/</span>
                             </li>
                         ):(
-                            <li key = {index} className = "px-2">
-                                <Link className = "px-1" to = {sublink[index]}>{crumb}</Link>
+                            <li key = {index}>
+                                <Link className = "px-1" to = {`sublink[index]`}>{crumb}</Link>
                             </li>
                         )
                     })

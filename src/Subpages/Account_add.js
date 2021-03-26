@@ -14,8 +14,8 @@ export default class Account_add extends Component {
     componentDidMount() {
         axios.get("http://localhost:4000/auth", { withCredentials: true, credentials: 'include' })
             .then((res) => {
-                if (res.data.isAuth == true) {
-                    if (res.data.isAdmin == 0) {
+                if (res.data.isAuth === true) {
+                    if (res.data.isAdmin === 0) {
                         this.setState({
                             auth: 'success',
                             admin: true
@@ -36,8 +36,8 @@ export default class Account_add extends Component {
             })
     }
     render() {
-        if (this.state.auth == "success") {
-            if (this.state.admin == true) {
+        if (this.state.auth === "success") {
+            if (this.state.admin === true) {
                 return (
                     <div>
                         <Header />

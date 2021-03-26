@@ -4,6 +4,7 @@ import Header1 from '../components/Header'
 import Header from '../components/Header1'
 import Sidebar from '../components/Sidebar'
 import Breadcrumb from '../components/Breadcrumb'
+import All_users from './All_users'
 
 export default class Accounts extends Component {
     state = {
@@ -13,8 +14,8 @@ export default class Accounts extends Component {
     componentDidMount() {
         axios.get("http://localhost:4000/auth", { withCredentials: true, credentials: 'include' })
             .then((res) => {
-                if (res.data.isAuth == true) {
-                    if (res.data.isAdmin == 0) {
+                if (res.data.isAuth === true) {
+                    if (res.data.isAdmin === 0) {
                         this.setState({
                             auth: 'success',
                             admin: true
@@ -35,8 +36,8 @@ export default class Accounts extends Component {
             })
     }
     render() {
-        if (this.state.auth == "success") {
-            if (this.state.admin == true) {
+        if (this.state.auth === "success") {
+            if (this.state.admin === true) {
                 return (
                     <div>
                         <Header />
@@ -44,7 +45,8 @@ export default class Accounts extends Component {
                             <Sidebar />
                             <div className="main">
                                 <Breadcrumb />
-                                <p>This is the Account page for admin</p>
+                                <p className = "text-center text-5xl py-5 text-yellow-800">All Members</p>
+                                <All_users />
                             </div>
                         </div>
                     </div>

@@ -128,6 +128,14 @@ app.get('/getProducts', (req, response) => {
 	});
 } );
 
+app.get('/getusers', (req,res) => {
+    userModel.find({}, function(err, result) {
+        if (err) throw err;
+        else{
+            res.json(result);
+        }
+    })
+})
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
