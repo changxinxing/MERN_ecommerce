@@ -1,69 +1,62 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, {useEffect, useState} from 'react'
 import Header1 from './Header1'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import Breadcrumb from './Breadcrumb'
+import {useDispatch} from 'react-redux';
+import dashboard from '../Actions/user_dashboard'
 
-export default class Dashboard extends Component {
-    state = {
-        auth:"",
-        admin:false
-    }
-    componentDidMount() {        
-        axios.get("http://localhost:4000/auth",{withCredentials: true, credentials: 'include'})
+export default function Dashboard() {
+    const dispatch = useDispatch();
+
+    const [auth, setauth] = useState("")
+    const [admin, setadmin] = useState(false)
+    useEffect(()=>{
+        dispatch(dashboard())
         .then((res)=>{
-            if(res.data.isAuth === true){
-                if(res.data.isAdmin === 0){
-                    this.setState({
-                        auth:'success',
-                        admin:true
-                    })
+            if(res.payload.isAuth === true){
+                if(res.payload.isAdmin === 0){
+                        setauth('success')
+                        setadmin(true)
                 }
                 else{
-                    this.setState({
-                        auth:'success',
-                        admin:false
-                    })
+                    setauth('success')
+                    setadmin(false)
                 }
             }
             else {
-                this.setState({
-                    auth:"failed"
-                })
+                setauth('failed')
             }
         })
-    }
-    render() {
-        if(this.state.auth === "success"){
-            if(this.state.admin === true){
-                return (
-                    <div>
-                        <Header1 />
-                        <div className = "mt-cus1">
-                            <Sidebar />
-                            <div className = "main">
-                                <Breadcrumb />
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
-            else{
-                return(
-                    <div>
-                        <Header1 />
-                    </div>
-                )
-            }
-        }
-        else{
+    }, [])
+    if(auth === "success"){
+        if(admin === true){
             return (
                 <div>
-                    <Header />
-                    {/* <p className = "warning">Please Login First</p> */}
+                    <Header1 />
+                    <div className = "mt-cus1">
+                        <Sidebar />
+                        <div className = "main">
+                            <Breadcrumb />
+                        </div>
+                    </div>
                 </div>
             )
-        }        
+        }
+        else{
+            return(
+                <div>
+                    <Header1 />
+                </div>
+            )
+        }
     }
+    else{
+        return (
+            <div>
+                <Header />
+                {/* <p className = "warning">Please Login First</p> */}
+            </div>
+        )
+    } 
 }
