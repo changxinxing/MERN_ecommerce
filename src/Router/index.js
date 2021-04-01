@@ -13,7 +13,7 @@ import Products from "../Subpages/Products";
 import Customers from "../Subpages/Customers";
 import Analytics from "../Subpages/Analytics";
 import Account_add from "../Subpages/Account_add";
-import Apitest from "../components/Apitest";
+import Auth from '../hoc/auth';
 
 function App() {
   return (
