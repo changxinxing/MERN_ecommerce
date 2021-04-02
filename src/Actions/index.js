@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {LOGIN_USER} from './types'
 import {CREATE} from './types'
-import {AUTH} from './types'
+import {AUTH, EDIT} from './types'
 
 export function loginUser(dataToSubmit){
     const request = axios.post("http://localhost:4000/login", dataToSubmit, {withCredentials: true, credentials: 'include'})
@@ -32,3 +32,13 @@ export function auth(){
     }
 }
 
+
+export function edit(dataToSubmit){
+    const request = axios.post("http://localhost:4000/edit", dataToSubmit, { withCredentials: true, credentials: 'include' })
+    .then(res => res.data)
+
+    return {
+        type:EDIT,
+        payload:request
+    }
+}

@@ -1,6 +1,6 @@
 import {LOGIN_USER} from '../Actions/types'
 import {DASHBOARD} from '../Actions/types'
-import {CREATE, AUTH} from '../Actions/types'
+import {CREATE, AUTH, EDIT} from '../Actions/types'
 export default function (state = {}, action) {
     switch (action.type){
         case LOGIN_USER:
@@ -15,6 +15,8 @@ export default function (state = {}, action) {
         case AUTH:
             return {...state, userData:action.payload}
             break;
+        case EDIT:
+            return {...state, editSuccess:action.payload}
         default:
             return state;
     }
