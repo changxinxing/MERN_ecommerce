@@ -10,7 +10,6 @@ export default function All_users() {
                 setUserdata(res.data)
             })
     }, [])
-
     return (
         <div className = "text-center">
             {userdata.map((user, index) => (

@@ -54,9 +54,7 @@ function App() {
         <Route path = "/forget">
           <Forget />
         </Route>
-        <Route path = "/edit" component = {Auth(Edit, true)}>
-          
-        </Route>
+        <Route path = "/edit" component = {Auth(Edit, true)}></Route>
       </div>
     </Router>
   );
