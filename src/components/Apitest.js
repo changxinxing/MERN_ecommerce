@@ -3,10 +3,12 @@ import axios from 'axios'
 
 export default function Apitest() {
     const [allproducts, setAllproducts] = useState([]);
+    const GoToDetail = (e) =>{
+        console.log(e);
+    }
     useEffect(() => {
         axios.get("http://localhost:4000/getProducts", { withCredentials: true, credentials: 'include' })
             .then((res) => {
-                console.log(res);
                 setAllproducts(res.data)
             })
     }, [])
@@ -34,9 +36,10 @@ export default function Apitest() {
                 <tbody>
                     {allproducts.map((singleproduct, index) => (
                         <tr key = {index}>
-                            <td className="px-5 py-1 border-b border-gray-200 bg-white text-sm w-2/5"><a href={singleproduct.permalink}><img className="flex-shrink-0 w-20 h-20 hidden sm:table-cell" src={singleproduct.images[0].src} /></a></td>
+                            {/* <td className="px-5 py-1 border-b border-gray-200 bg-white text-sm w-2/5"><button><a href={singleproduct.permalink}><img className="flex-shrink-0 w-20 h-20 hidden sm:table-cell" src={singleproduct.images[0].src} /></a></button></td> */}
+                            <td className="px-5 py-1 border-b border-gray-200 bg-white text-sm w-2/5"><button onClick = {GoToDetail(singleproduct.id)}><img className="flex-shrink-0 w-20 h-20 hidden sm:table-cell" src={singleproduct.images[0].src} /></button></td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>{singleproduct.name}</p></td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>{singleproduct.sku}</p></td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>{singleproduct.sku}{singleproduct.id}</p></td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>${singleproduct.price}</p></td>
                         </tr>
                     ))}

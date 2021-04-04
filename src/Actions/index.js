@@ -1,12 +1,10 @@
 import axios from 'axios';
-import {LOGIN_USER} from './types'
-import {CREATE} from './types'
-import {AUTH, EDIT} from './types'
+import {LOGIN_USER, CREATE, AUTH, EDIT} from './types'
+import {accountService} from '../services/AccountService'
 
 export function loginUser(dataToSubmit){
-    const request = axios.post("http://localhost:4000/login", dataToSubmit, {withCredentials: true, credentials: 'include'})
+    const request = accountService.login(dataToSubmit)
     .then(res => res.data)
-
     return {
         type:LOGIN_USER,
         payload:request
@@ -14,9 +12,8 @@ export function loginUser(dataToSubmit){
 }
 
 export function registerUser(dataToSubmit){
-    const request = axios.post("http://localhost:4000/signup", dataToSubmit, {withCredentials: true, credentials: 'include'})
+    const request = accountService.signup(dataToSubmit)
     .then(res => res.data)
-
     return {
         type:CREATE,
         payload:request
@@ -34,9 +31,8 @@ export function auth(){
 
 
 export function edit(dataToSubmit){
-    const request = axios.post("http://localhost:4000/edit", dataToSubmit, { withCredentials: true, credentials: 'include' })
+    const request = accountService.edit(dataToSubmit)
     .then(res => res.data)
-
     return {
         type:EDIT,
         payload:request
