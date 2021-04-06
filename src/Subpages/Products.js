@@ -46,7 +46,6 @@ export default class Products extends Component {
                             <Sidebar />
                             <div className="main">
                                 <Breadcrumb />
-                                <p className = "text-center text-5xl py-5 text-yellow-800">All Products</p>
                                 <Apitest />                               
                             </div>
                         </div>

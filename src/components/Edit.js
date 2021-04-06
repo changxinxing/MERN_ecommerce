@@ -39,7 +39,6 @@ export default function Edit() {
         if(user_password.length>5){
             dispatch(edit(postData))
                 .then((res) =>{
-                    console.log(postData);
                     if(res.payload.success === false){
                             setsuccess_notification("")
                             setpassword_notification("")

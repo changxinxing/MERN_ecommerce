@@ -4,6 +4,8 @@ import Header1 from '../components/Header'
 import Header from '../components/Header1'
 import Sidebar from '../components/Sidebar'
 import Breadcrumb from '../components/Breadcrumb'
+import Chart from '../utils/chart'
+import Diagram from '../utils/diagram'
 
 export default class Analytics extends Component {
     state = {
@@ -44,7 +46,8 @@ export default class Analytics extends Component {
                             <Sidebar />
                             <div className="main">
                                 <Breadcrumb />
-                                <p>This is the Analytics page for admin</p>
+                                <Chart />
+                                <Diagram />
                             </div>
                         </div>
                     </div>

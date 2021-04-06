@@ -1,6 +1,4 @@
-import {LOGIN_USER} from '../Actions/types'
-import {DASHBOARD} from '../Actions/types'
-import {CREATE, AUTH, EDIT} from '../Actions/types'
+import {LOGIN_USER, DASHBOARD, CREATE, AUTH, EDIT} from '../Actions/types'
 export default function (state = {}, action) {
     switch (action.type){
         case LOGIN_USER:

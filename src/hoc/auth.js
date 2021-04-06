@@ -8,7 +8,6 @@ export default function(SpecificComponent, option, adminRoute = null){
         const dispatch = useDispatch()
         useEffect(() => {
             dispatch(auth()).then((res) => {
-                console.log(res);
                 if(!res.payload.isAuth){
                     if(option){
                         props.history.push('/login')

@@ -127,6 +127,47 @@ app.get('/getProducts', (req, response) => {
 		response.json( JSON.parse(res) );
 	});
 } );
+app.get('/getorders', (req, response) => {
+	var WooCommerce = new WooCommerceAPI({
+		url: 'https://store.kandykoi.com',
+		consumerKey: keys.consumerKey,
+		consumerSecret: keys.consumerSecret,
+		wpAPI: true,
+		version: 'wc/v3'
+	});
+
+	WooCommerce.get('reports/orders/totals', function(err, data, res) {
+		response.json( JSON.parse(res) );
+	});
+} );
+app.post('/SingleProduct', (req, response) => {
+	var WooCommerce = new WooCommerceAPI({
+		url: 'https://store.kandykoi.com',
+		consumerKey: keys.consumerKey,
+		consumerSecret: keys.consumerSecret,
+		wpAPI: true,
+		version: 'wc/v3'
+	});
+    var url = "products/" + req.body.id;
+	WooCommerce.get(url, function(err, data, res) {
+		response.json( JSON.parse(res) );
+	});
+} );
+
+app.post('/updateProduct', (req, response) => {
+	var WooCommerce = new WooCommerceAPI({
+		url: 'https://store.kandykoi.com',
+		consumerKey: keys.consumerKey,
+		consumerSecret: keys.consumerSecret,
+		wpAPI: true,
+		version: 'wc/v3'
+	});
+    var url = "products/" + req.body.id;
+    const data = req.body;
+	WooCommerce.put(url, data, function(err, data, res) {
+		response.json( JSON.parse(res) );
+	});
+} );
 
 app.get('/getusers', (req,res) => {
     userModel.find({}, function(err, result) {
