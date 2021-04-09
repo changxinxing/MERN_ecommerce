@@ -7,7 +7,8 @@ module.exports = {
         cus1:'7vh',
         cus2:'93vh',
         sw:'250px',
-        spt:'20px'
+        spt:'20px',
+        tw:'12.5%'
       }
     },
   },

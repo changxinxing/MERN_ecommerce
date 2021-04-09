@@ -5,7 +5,9 @@ import Header from '../components/Header1'
 import Sidebar from '../components/Sidebar'
 import Breadcrumb from '../components/Breadcrumb'
 import Chart from '../utils/chart'
-import Diagram from '../utils/diagram'
+import Ordertotal from '../utils/order_total'
+import Saletotals from '../utils/sale_totals'
+import ProductTotal from '../utils/product_total'
 
 export default class Analytics extends Component {
     state = {
@@ -46,8 +48,10 @@ export default class Analytics extends Component {
                             <Sidebar />
                             <div className="main">
                                 <Breadcrumb />
+                                <Ordertotal />
+                                <Saletotals />
+                                <ProductTotal />
                                 <Chart />
-                                <Diagram />
                             </div>
                         </div>
                     </div>

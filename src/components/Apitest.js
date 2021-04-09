@@ -113,7 +113,7 @@ export default function Apitest() {
                             <td className="px-5 py-1 border-b border-gray-200 bg-white text-center text-sm w-1/5"><button onClick = {()=>{GoToDetail(singleproduct.id)}}><img className="flex-shrink-0 w-40 h-44 hidden sm:table-cell" src={singleproduct.images[0].src} /></button></td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>{singleproduct.name}</p></td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>{singleproduct.sku}{singleproduct.id}</p></td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>${singleproduct.sale_price}</p></td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>${singleproduct.regular_price}  ${singleproduct.sale_price}</p></td>
                             <td className="px-5 py-1 border-b border-gray-200 bg-white text-center text-sm w-1/5"><button className = "mb-4 bg-pink-400 hover:bg-pink-700 px-10 py-2 rounded text-green-900 hover:text-green-400" onClick = {()=>{GoToEdit(singleproduct.id)}}>Edit</button></td>
                         </tr>
                     ))}

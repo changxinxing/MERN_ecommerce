@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -8,6 +9,7 @@ const Str = require('@supercharge/strings')
 const PORT = 4000;
 const sendEmail = require('../backend/utils/sendemail');
 const WooCommerceAPI  = require('woocommerce-api');
+const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
 const keys = require('./config/woocommerce-api');
 
 const userModel = require("./model/user");
@@ -140,6 +142,42 @@ app.get('/getorders', (req, response) => {
 		response.json( JSON.parse(res) );
 	});
 } );
+app.get('/getproductstotal', (req, response) => {
+	var WooCommerce = new WooCommerceAPI({
+		url: 'https://store.kandykoi.com',
+		consumerKey: keys.consumerKey,
+		consumerSecret: keys.consumerSecret,
+		wpAPI: true,
+		version: 'wc/v3'
+	});
+
+	WooCommerce.get('reports/products/totals', function(err, data, res) {
+		response.json( JSON.parse(res) );
+	});
+} );
+app.get('/getsales', (req, response) => {
+    let date_obj = new Date();
+    let date = date_obj.getDate();
+    let date1 = date-5;
+    let month = date_obj.getMonth() + 1;
+    let year = date_obj.getFullYear();
+
+	const WooCommerce = new WooCommerceRestApi({
+		url: 'https://store.kandykoi.com',
+		consumerKey: keys.consumerKey,
+		consumerSecret: keys.consumerSecret,		
+		version: 'wc/v3'
+	});
+	WooCommerce.get("reports/sales", {
+        date_min: year+"-0"+month+"-0"+date1,
+        date_max: year+"-0"+month+"-0"+date
+      })
+        .then((res) => {
+          console.log("Response Data:", res.data);
+          response.send(res.data);
+        })
+} );
+
 app.post('/SingleProduct', (req, response) => {
 	var WooCommerce = new WooCommerceAPI({
 		url: 'https://store.kandykoi.com',
@@ -176,7 +214,8 @@ app.get('/getusers', (req,res) => {
             res.json(result);
         }
     })
-})
+});
+
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });

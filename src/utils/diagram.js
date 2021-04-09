@@ -19,6 +19,7 @@ const data = [
   { day: '2021-04-04', sale: 6.127 },
   { day: '2021-04-05', sale: 6.930 },
 ];
+console.log(data[0].day);
 
 export default class Diagram extends React.PureComponent {
   constructor(props) {
