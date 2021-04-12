@@ -29,8 +29,6 @@ export default function Dashboard() {
             }
         })
     }, [])
-    if(auth === "success"){
-        if(admin === true){
             return (
                 <div>
                     <Header1 />
@@ -42,21 +40,4 @@ export default function Dashboard() {
                     </div>
                 </div>
             )
-        }
-        else{
-            return(
-                <div>
-                    <Header1 />
-                </div>
-            )
-        }
-    }
-    else{
-        return (
-            <div>
-                <Header />
-                {/* <p className = "warning">Please Login First</p> */}
-            </div>
-        )
-    } 
 }

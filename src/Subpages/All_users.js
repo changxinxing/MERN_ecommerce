@@ -1,8 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import avatar from '../avatar.jpg';
-import { Link } from 'react-router-dom'
-export default function All_users() {
+export default function Allusers() {
     const [userdata, setUserdata] = useState([])
     useEffect(() => {
         axios.get("http://localhost:4000/getusers", { withCredentials: true, credentials: 'include' })

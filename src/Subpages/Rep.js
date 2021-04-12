@@ -10,33 +10,31 @@ export default class Rep extends Component {
         auth: "",
         admin: false
     }
-    componentDidMount() {
-        axios.get("http://localhost:4000/auth", { withCredentials: true, credentials: 'include' })
-            .then((res) => {
-                if (res.data.isAuth === true) {
-                    if (res.data.isAdmin === 0) {
-                        this.setState({
-                            auth: 'success',
-                            admin: true
-                        })
-                    }
-                    else {
-                        this.setState({
-                            auth: 'success',
-                            admin: false
-                        })
-                    }
-                }
-                else {
-                    this.setState({
-                        auth: "failed"
-                    })
-                }
-            })
-    }
+    // componentDidMount() {
+    //     axios.get("http://localhost:4000/auth", { withCredentials: true, credentials: 'include' })
+    //         .then((res) => {
+    //             if (res.data.isAuth === true) {
+    //                 if (res.data.isAdmin === 0) {
+    //                     this.setState({
+    //                         auth: 'success',
+    //                         admin: true
+    //                     })
+    //                 }
+    //                 else {
+    //                     this.setState({
+    //                         auth: 'success',
+    //                         admin: false
+    //                     })
+    //                 }
+    //             }
+    //             else {
+    //                 this.setState({
+    //                     auth: "failed"
+    //                 })
+    //             }
+    //         })
+    // }
     render() {
-        if (this.state.auth === "success") {
-            if (this.state.admin === true) {
                 return (
                     <div>
                         <Header />
@@ -49,23 +47,5 @@ export default class Rep extends Component {
                         </div>
                     </div>
                 )
-            }
-            else {
-                return (
-                    <div>
-                        <Header />
-                        <p>You are not allowed to access to this page.</p>
-                    </div>
-                )
-            }
-        }
-        else {
-            return (
-                <div>
-                    <Header1 />
-                    {/* <p className="warning">Please Login First</p> */}
-                </div>
-            )
-        }
     }
 }

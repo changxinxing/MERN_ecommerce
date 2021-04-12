@@ -42,7 +42,8 @@ export default function Apitest() {
             setDesc(res.payload.description)
         })        
         setSingle(e);
-        setEdit('edit');        
+        setEdit('edit');
+        console.log(e);        
     }
     const Update = (e) => {
         setSingle('');
@@ -76,10 +77,11 @@ export default function Apitest() {
         axios.get("http://localhost:4000/getProducts", { withCredentials: true, credentials: 'include' })
             .then((res) => {
                 setAllproducts(res.data);
+                console.log(res);
             })
     }, [])
     
-    if(single == ''){
+    if(single === ''){
     return (
         <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
             <p className = "text-center text-5xl py-5 text-yellow-800">All Products</p>
@@ -98,7 +100,7 @@ export default function Apitest() {
                             </th>
                         <th
                             className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider w-1/5">
-                            Price
+                            Description
                             </th>
                         <th
                             className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider w-1/5">
@@ -113,7 +115,7 @@ export default function Apitest() {
                             <td className="px-5 py-1 border-b border-gray-200 bg-white text-center text-sm w-1/5"><button onClick = {()=>{GoToDetail(singleproduct.id)}}><img className="flex-shrink-0 w-40 h-44 hidden sm:table-cell" src={singleproduct.images[0].src} /></button></td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>{singleproduct.name}</p></td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>{singleproduct.sku}{singleproduct.id}</p></td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>${singleproduct.regular_price}  ${singleproduct.sale_price}</p></td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 text-center"><p>{singleproduct.description.replace('<p>','').replace('</p>','')}</p></td>
                             <td className="px-5 py-1 border-b border-gray-200 bg-white text-center text-sm w-1/5"><button className = "mb-4 bg-pink-400 hover:bg-pink-700 px-10 py-2 rounded text-green-900 hover:text-green-400" onClick = {()=>{GoToEdit(singleproduct.id)}}>Edit</button></td>
                         </tr>
                     ))}
@@ -123,7 +125,7 @@ export default function Apitest() {
     )
 }
 else{
-    if(edit == ''){
+    if(edit === ''){
     var redirect = `/dashboard/products?${single}`
     var back = "<-Back";   
     return (
@@ -138,28 +140,26 @@ else{
                 <div className = "product_info w-1/2 px-4">
                     <h1>{item_name}</h1>
                     <p><span className = "line-through">${normalprice}</span><span>   ${saleprice}</span></p>
-                    {desc}<br/>
+                    {desc.replace('<p>','').replace('</p>','')}<br/>
                     
                 </div>
             </div>                       
         </>
     )
     }
-    else{
-        var redirect = `/dashboard/products?${single}`    
+    else{    
         return (
             <>
-                <Redirect to = {redirect} />
                 <div className = "px-40 inline-flex pt-40 w-full">
                     <div className = "product_img w-1/2">
                         <img id = "item_img" src = {item_src} />
                     </div>
                     <div className = "product_info w-1/2 px-4">
-                        <label>Product Name</label>
+                        <label className = "text-white">Product Name</label>
                         <input type = "text" value = {item_name} onChange = {NameHandle} />
-                        <label>Regular Price</label>
+                        <label className = "text-white">Regular Price</label>
                         <input type = "text" value = {normalprice} onChange = {NormalPriceHandle} />
-                        <label>Sale Price</label>
+                        <label className = "text-white">Sale Price</label>
                         <input type = "text" value = {saleprice} onChange = {SalePriceHandle}/>
                         <button className = "bg-green-400 font-bold py-2 px-4 rounded text-white" onClick = {()=>{Update(single)}}>Update</button>
                         <button className = "bg-red-700 font-bold py-2 px-4 rounded text-white" onClick = {Cancel}>Cancel</button>

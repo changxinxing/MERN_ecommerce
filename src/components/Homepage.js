@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Link, Route} from "react-router-dom";
 import logo from '../logo.svg';
 import './home.css'
+import Header1 from './Header1';
 
 export default class Homepage extends Component {
     render() {
         return (
             <div className = "homepage">
+                <Header1 />
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
                     <p>Learn MERN Stack</p><br />

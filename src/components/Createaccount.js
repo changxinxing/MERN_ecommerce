@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import md5 from 'md5';
 import {registerUser} from '../Actions/index';
+import Header1 from './Header1';
 
 export default function Createaccount() {
     const dispatch = useDispatch();
@@ -61,6 +62,7 @@ export default function Createaccount() {
     }
     return (
         <div>
+            <Header1 />
             <p className="welcome">{success_notification}</p>
             <div className="w-4/12 mx-auto mt-60 bg-blue-100 py-20px rounded-xl shadow-lg py-6">
                 <p className="form-title">Register</p>

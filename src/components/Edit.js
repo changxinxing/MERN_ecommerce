@@ -82,6 +82,7 @@ export default function Edit() {
                         <div className = "form-group">
                             <label>Password:</label><br />
                             <input className = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type = "password" onChange = {onChangePassword} value = {user_password} placeholder = "Type a password" required />
+                            {password_notification}
                         </div>
                         <div className = "form-group">
                             <input type = "submit" value = "Update" className = "btn btn-primary" />

@@ -77,6 +77,14 @@ app.get('/auth', auth,  (req, res) =>{
         isAdmin:req.user.role
     })
 })
+app.get('/logout', auth, (req, res)=>{
+    userModel.findOneAndUpdate({_id:req.user._id},
+        {token:""}
+        , (err, user)=>{
+            if(err) return res.json({success:false, err});
+            return res.json({success:true})
+        })
+})
 app.post('/edit', (req,res) => {
     userModel.updateOne({_id:req.body._id},[{$set:{name:req.body.name}},{$set:{email:req.body.email}},{$set:{password:req.body.password}}])
     .then(function(){
@@ -157,8 +165,8 @@ app.get('/getproductstotal', (req, response) => {
 } );
 app.get('/getsales', (req, response) => {
     let date_obj = new Date();
-    let date = date_obj.getDate();
-    let date1 = date-5;
+    let date = 9;
+    let date1 = 5;
     let month = date_obj.getMonth() + 1;
     let year = date_obj.getFullYear();
 
@@ -170,10 +178,9 @@ app.get('/getsales', (req, response) => {
 	});
 	WooCommerce.get("reports/sales", {
         date_min: year+"-0"+month+"-0"+date1,
-        date_max: year+"-0"+month+"-0"+date
+        date_max: "2021-04-12"
       })
         .then((res) => {
-          console.log("Response Data:", res.data);
           response.send(res.data);
         })
 } );

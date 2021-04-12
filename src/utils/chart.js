@@ -1,18 +1,42 @@
 import React from 'react'
 import { Line } from '@ant-design/charts';
+import { CanvasJSChart } from 'canvasjs-react-charts'
 
 export default function Chart() {
     const data = [
-        { day: '2021-03-28', value: 3 },
-        { day: '2021-03-29', value: 4 },
-        { day: '2021-03-30', value: 7 },
-        { day: '2021-03-31', value: 5 },
-        { day: '2021-04-01', value: 8 },
-        { day: '2021-04-02', value: 6 },
-        { day: '2021-04-03', value: 7 },
-        { day: '2021-04-04', value: 9 },
-        { day: '2021-04-05', value: 11 },
+        { day: '2021-04-05', value: 5 },
+        { day: '2021-04-06', value: 8 },
+        { day: '2021-04-07', value: 6 },
+        { day: '2021-04-08', value: 7 },
+        { day: '2021-04-09', value: 9 },
+        { day: '2021-04-10', value: 11 },
       ];
+
+      const options = {
+        theme: "dark2",
+        animationEnabled: true,
+        exportFileName: "New Year Resolutions",
+        exportEnabled: true,
+        title:{
+            text: " "
+        },
+        data: [{
+            type: "pie",
+            showInLegend: true,
+            legendText: "{label}",
+            toolTipContent: "{label}: <strong>{y}</strong>",
+            indexLabel: "{y} visitors",
+            indexLabelPlacement: "inside",
+            dataPoints: [
+                { y: 7, label: '2021-04-05' },
+                { y: 8, label: '2021-04-06' },
+                { y: 7, label: '2021-04-07' },
+                { y: 6, label: '2021-04-08' },
+                { y: 9, label: '2021-04-09' },
+                { y: 11, label: '2021-04-10' },
+            ]
+        }]
+    }
     
       const config = {
         data,
@@ -25,9 +49,14 @@ export default function Chart() {
         },
       };
     return(
-        <div className = "px-4 py-4 mx-3 my-3 bg-white">
-            <h3 className = "text-center mb-spt font-normal">Everyday Visitors</h3>
-            <Line {...config} />
+      <div className = "px-4 py-4 mx-3 my-3 bg-white">
+          <div>
+              <h3 className = "text-center mb-spt font-normal">Everyday Visitors</h3>
+              <Line {...config} />              
+          </div>
+          <div className = "mt-4">
+            <CanvasJSChart options = {options} />
+          </div>          
         </div>
     ) 
 }

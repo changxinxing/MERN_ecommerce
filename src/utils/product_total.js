@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import {useDispatch} from 'react-redux'
 import {totalproducts} from '../Actions/index'
-import { PieChart } from 'react-minimal-pie-chart';
+import { CanvasJSChart } from 'canvasjs-react-charts'
 
 export default function ProductTotal() {
     const dispatch = useDispatch();
@@ -12,13 +12,32 @@ export default function ProductTotal() {
             setProductData(res.payload);
         })
     },[productdata])
+    const options = {
+        theme: "dark2",
+        animationEnabled: true,
+        exportFileName: "New Year Resolutions",
+        exportEnabled: true,
+        title:{
+            text: "Products Statics"
+        },
+        data: [{
+            type: "bar",
+            showInLegend: true,
+            legendText: "{label}",
+            toolTipContent: "{label}: <strong>{y}</strong>",
+            indexLabel: "{y}",
+            indexLabelPlacement: "inside",
+            dataPoints: [
+                { y: productdata[0].total, label: "Affiliate" },
+                { y: productdata[1].total, label: "Gruped" },
+                { y: productdata[2].total, label: "Simple" },
+                { y: productdata[3].total, label: "Variant" },
+            ]
+        }]
+    }
     return (
-        <div>
-            <PieChart data={[
-                { title: productdata[0].name, value: productdata[0].total, label: 1, color: '#E38627' },
-                { title: productdata[1].name, value: productdata[1].total, label: 2, color: '#C13C37' },
-                { title: productdata[2].name, value: productdata[2].total, label: 3, color: '#6A2135' },
-                { title: productdata[3].name, value: productdata[3].total, label: 4, color: '#6A2135' },]} style={{ height: '400px' }} />;
+        <div className = "px-4 py-4 mx-3 my-3 bg-white">
+            <CanvasJSChart options = {options} />
         </div>
     )
 }
